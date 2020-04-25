@@ -1,3 +1,4 @@
 const app = require("./app");
 
-app.listen(3333, () => console.log('application running on 3333'));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`application running on ${PORT}`));
