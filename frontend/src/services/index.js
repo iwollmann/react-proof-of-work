@@ -5,7 +5,7 @@ import { generate } from './hashcash';
 export default async function Submit(version) {
     const { decodedhash, timespent } = await generate(version);
     try {
-        const response = await axios.post('https://proof-of-work-be.herokuapp.com/counter', null, {
+        const response = await axios.post('https://proof-of-work-be.herokuapp.com:3333/counter', null, {
             headers: {
                 'x-hashcash': decodedhash,
             }
