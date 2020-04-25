@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon --inspect src/server.js"
+    "start": "node server.js",
+    "dev": "nodemon --inspect server.js"
   },
   "devDependencies": {
     "nodemon": "^2.0.3"
