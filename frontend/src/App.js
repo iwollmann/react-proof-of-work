@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import ButtonProof from './components/ButtonProof';
 import Stats from './components/Stats'
-import { Grommet, Box, Grid } from 'grommet'
+import { Grommet, Box, Header } from 'grommet'
 import { grommet } from "grommet/themes";
 
 import Submit from './services';
@@ -20,27 +20,19 @@ function App() {
     return success;
   }
 
-  return (<Grommet theme={grommet} themeMode="light">
-    <Grid fill
-      rows={["auto", "flex"]}
-      columns={["auto", "flex"]}
-      areas={[
-        { name: "header", start: [0, 0], end: [1, 0] },
-        { name: "sidebar", start: [1, 0], end: [0, 1] },
-        { name: "main", start: [1, 1], end: [1, 1] }
-      ]}
-      gap='small'>
-      <Box gridArea="header">
-        <h1>React Proof of Work Sample</h1>
+  return (<Grommet theme={grommet} full>
+    <Box overflow="auto" align="center" flex="grow" direction="row" justify="center" height="xlarge" fill="vertical">
+      <Box align="center" justify="center" overflow="auto" flex="grow" fill="vertical">
+        <Header align="baseline" direction="row" flex="shrink" justify="center" gap="medium" margin={{ "bottom": "xlarge" }} >
+          <h1>React Proof of Work Sample</h1>
+        </Header>
+        <Box align="center" justify="center" direction="row" flex="shrink" fill="horizontal" margin={{ "bottom": "xlarge" }}>
+          <ButtonProof onSubmit={onSubmit} />
+          <Stats data={stats} />
+        </Box>
       </Box>
-      <Box gridArea="main">
-        <ButtonProof onSubmit={onSubmit} />
-      </Box>
-      <Box gridArea="sidebar">
-        <Stats data={stats} />
-      </Box>
-    </Grid>
-  </Grommet>
+    </Box>
+  </Grommet >
   );
 }
 

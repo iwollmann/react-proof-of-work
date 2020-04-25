@@ -1,27 +1,17 @@
 import React from 'react';
-import { Box } from 'grommet';
+import { Box, Text } from 'grommet';
 
 const Stats = ({ data: { timespent, version, nonce, str, date } }) => {
-    return <Box
-        width="medium"
-        height="medium"
-        round="small"
-        align="start"
-        justify="start"
-        background="brand"
-        direction='column'
-    >
-        <h2>Statistics</h2>
-        <ul>
-            <li>Current version: {version}</li>
-            <li>Generated time: {timespent ?? 0} milliseconds</li>
-            <li>String: {str}</li>
-            <li>Nonce: {nonce}</li>
-            <li>Generated at: {new Intl.DateTimeFormat('en', {
-                hour: 'numeric', minute: 'numeric', second: 'numeric',
-                timeZoneName: 'short'
-            }).format(date)}</li>
-        </ul>
+    const generatedTime = () => timespent ? `${timespent} milliseconds` : ''
+    return <Box align="stretch" justify="center" flex="shrink" basis="medium" direction="column" round="medium" fill="vertical" background={{ "dark": false, "color": "brand", "opacity": "medium" }} overflow="visible" pad="xsmall">
+        <Text><strong>Current version:</strong> {version} </Text>
+        <Text><strong>Generated time:</strong> {generatedTime()}</Text>
+        <Text truncate={true}><strong>String:</strong> {str} </Text>
+        <Text><strong>Nonce:</strong> {nonce} </Text>
+        <Text truncate={true}><strong>Generated at:</strong> {date ? new Intl.DateTimeFormat('en', {
+            hour: 'numeric', minute: 'numeric', second: 'numeric',
+            timeZoneName: 'short'
+        }).format(date) : ''}</Text>
     </Box>
 }
 

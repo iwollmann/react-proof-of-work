@@ -53,7 +53,7 @@ const validateMiddleware = (request, response, next) => {
     }
 
     // FOR THIS SAMPLE WE WILL LIMIT THE VERSION TO 6 TO AVOID CLIENT CRASH
-    client.version = client.version > 3 ? 0 : Number.parseInt(client.version) + 1;
+    client.version = client.version > 4 ? 0 : Number.parseInt(client.version) + 1;
 
     clientRequests[clientIndex] = client;
 

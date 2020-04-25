@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { Button } from 'react-bootstrap';
 import { Button, Text, Box } from 'grommet'
 
 function ButtonProof(props) {
@@ -16,12 +15,13 @@ function ButtonProof(props) {
     }
 
     return (
-        <div>
+        <Box align="center" justify="center" pad="xlarge">
             <Button label="Click Me" disabled={!enabled} onClick={handleClickButton} />
-            <Box pad="xsmall" fill>
-                <Text size="large">{counter}</Text>
-            </Box>
-        </div >);
+            <Text>
+                {counter}
+            </Text>
+        </Box>
+    );
 }
 
 export default ButtonProof;
