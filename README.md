@@ -10,5 +10,7 @@ You can see this sample running [here](https://master--zealous-easley-71f407.net
 
 For this sample I limit the compare to 20 bits to avoid client browser crash.
 
+![](assets/sample.png)
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
