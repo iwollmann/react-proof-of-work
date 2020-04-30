@@ -40,7 +40,6 @@ const validateMiddleware = (request, response, next) => {
 
     const ip = requestIp.getClientIp(request);
 
-    console.log(`ip from be:${ip}`);
     if (ip !== haship)
         return response.status(400).json({ 'error': 'Invalid hashset' });
 
