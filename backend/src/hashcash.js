@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+const requestIp = require('request-ip');
 
 //version:bits:timestamp:IPADDRESS:options:randomstring:nonce
 const parse = (decoded) => {
@@ -36,7 +37,8 @@ const clientRequests = [];
 const validateMiddleware = (request, response, next) => {
     const hashcash = request.headers['x-hashcash'];
     const { version, ip: haship } = parse(hashcash);
-    const ip = request.ip;
+
+    const ip = requestIp.getClientIp(request);
 
     console.log(`ip from be:${ip}`);
     if (ip !== haship)
