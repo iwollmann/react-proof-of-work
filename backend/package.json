@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon --inspect server.js"
+    "dev": "set PORT=3333 && nodemon --inspect server.js"
   },
   "devDependencies": {
     "nodemon": "^2.0.3"

@@ -35,8 +35,12 @@ const clientRequests = [];
 
 const validateMiddleware = (request, response, next) => {
     const hashcash = request.headers['x-hashcash'];
-    const { version } = parse(hashcash);
+    const { version, ip: haship } = parse(hashcash);
     const ip = request.ip;
+
+    if (ip !== haship)
+        return response.status(400).json({ 'error': 'Invalid hashset' });
+
     let clientIndex = clientRequests.findIndex(x => x.ip === ip);
     if (clientIndex < 0) {
         clientIndex = clientRequests.push({
@@ -52,8 +56,8 @@ const validateMiddleware = (request, response, next) => {
         }
     }
 
-    // FOR THIS SAMPLE WE WILL LIMIT THE VERSION TO 6 TO AVOID CLIENT CRASH
-    client.version = client.version > 4 ? 0 : Number.parseInt(client.version) + 1;
+    // FOR THIS SAMPLE WE WILL LIMIT THE VERSION TO 5 TO AVOID CLIENT CRASH
+    client.version = client.version > 5 ? 0 : Number.parseInt(client.version) + 1;
 
     clientRequests[clientIndex] = client;
 

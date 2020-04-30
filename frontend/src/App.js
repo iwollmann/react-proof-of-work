@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import ButtonProof from './components/ButtonProof';
 import Stats from './components/Stats'
@@ -11,14 +11,14 @@ import { parse } from './services/hashcash'
 function App() {
   const [stats, setStats] = useState({});
 
-  const onSubmit = async () => {
+  const onSubmit = useCallback(async () => {
     const { version: nextVersion, success, timespent, decodedhash } = await Submit(stats?.nextVersion ?? 0);
     if (success) {
       setStats({ nextVersion, timespent, ...parse(decodedhash) });
     }
 
     return success;
-  }
+  }, [stats]);
 
   return (<Grommet theme={grommet} full>
     <Box overflow="auto" align="center" flex="grow" direction="row" justify="center" height="xlarge" fill="vertical">
