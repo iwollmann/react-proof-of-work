@@ -12,7 +12,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "public-ip": "^4.0.1",
     "request-ip": "^2.1.3"
   }
